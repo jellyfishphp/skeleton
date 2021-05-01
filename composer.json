@@ -1,0 +1,40 @@
+{
+  "name": "jellyfish/skeleton",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.4",
+    "jellyfish/jellyfish": "dev-main"
+  },
+  "require-dev": {
+    "codeception/codeception": "^4.0",
+    "mikey179/vfsstream": "^v1.6",
+    "phpstan/phpstan": "^0.12",
+    "roave/security-advisories": "dev-master as 1.0.0",
+    "sebastian/phpcpd": "^6.0",
+    "squizlabs/php_codesniffer": "^3.0"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/jellyfishphp/jellyfish.git"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Generated\\": "src/Generated",
+      "Tentacle\\": "src/Tentacle"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tentacle\\": "tests/Tentacle"
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "use-include-path": true,
+    "sort-packages": true,
+    "github-protocols": ["https"],
+    "process-timeout": 900
+  }
+}

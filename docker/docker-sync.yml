@@ -1,0 +1,13 @@
+version: '2'
+
+options:
+    verbose: true
+
+syncs:
+    ${COMPOSE_PROJECT_NAME}-unision-sync:
+        src: '../'
+        sync_excludes: ['.idea', 'docker', '.DS_Store']
+        sync_userid: '82'
+        sync_groupid: '82'
+        sync_args:
+            - "-prefer newer"

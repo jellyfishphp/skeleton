@@ -1,0 +1,11 @@
+.git/
+.git*
+.idea
+.DS_Store
+
+codeception.yml
+Dockerfile
+Makefile
+
+docker
+var

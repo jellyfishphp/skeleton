@@ -1,0 +1,14 @@
+.idea
+
+.DS_Store
+
+src/Generated
+
+docker/.env
+docker/.docker-sync
+
+var/log/*
+
+vendor
+
+rr

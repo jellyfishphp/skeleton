@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  roadrunner:
+    image: "jellyfishphp/php-cli:${PHP_VERSION}-dev-alpine"
+    volumes:
+      - docker-sync:/var/www/jellyfish/releases/current:nocopy
+    ports:
+      - 80
+    links:
+      - rabbitmq
+      - redis
+    environment:
+      APPLICATION_ENV: "${APPLICATION_ENV}"
+      RABBIT_MQ_HOST: rabbitmq
+      RABBIT_MQ_PORT: 5672
+      RABBIT_MQ_USER: rabbitmq
+      RABBIT_MQ_PASSWORD: qmtibbar
+      RABBIT_MQ_VHOST: "/"
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    command:
+      [./rr, serve]
+    labels:
+      - "traefik.http.routers.jellyfish.rule=Host(`jellyfish.localhost`)"
+    network_mode: bridge
+
+  rabbitmq:
+    image: rabbitmq:3.8-management-alpine
+    ports:
+      - 15672
+    environment:
+      VIRTUAL_HOST: rabbitmq.jellyfish.localhost
+      VIRTUAL_PORT: 15672
+      RABBITMQ_DEFAULT_USER: rabbitmq
+      RABBITMQ_DEFAULT_PASS: qmtibbar
+    network_mode: bridge
+
+  redis:
+    image: redis:5-alpine
+    ports:
+      - 6379
+    network_mode: bridge
+
+volumes:
+  docker-sync:
+    external:
+      name: "${COMPOSE_PROJECT_NAME}-unision-sync"
