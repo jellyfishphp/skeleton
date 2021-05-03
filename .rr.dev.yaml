@@ -31,12 +31,12 @@ logs:
   # disables sampling. Stacktraces are automatically included on logs of WarnLevel and above.
   #
   # Default: "development"
-  mode: production
+  mode: development
 
   # Logging level can be "panic", "error", "warning", "info", "debug".
   #
   # Default: "debug"
-  level: error
+  level: debug
 
   # Encoding format can be "console" or "json" (last is preferred for production usage).
   #
@@ -181,3 +181,41 @@ status:
   # Default: 503
   #unavailable_status_code: 503
 
+# Automatically detect PHP file changes and reload connected services (docs:
+# https://roadrunner.dev/docs/beep-beep-reload). Drop this section for this feature disabling.
+reload:
+  # Sync interval.
+  #
+  # Default: "1s"
+  #interval: 1s
+
+  # Global patterns to sync.
+  #
+  # Default: [".php"]
+  #patterns: [".php"]
+
+  # List of included for sync services (this is a map, where key name is a plugin name).
+  #
+  # Default: <empty map>
+  services:
+    http:
+      # Directories to sync. If recursive is set to true, recursive sync will be applied only to the directories in
+      # "dirs" section. Dot (.) means "current working directory".
+      #
+      # Default: []
+      dirs: ["."]
+
+      # Recursive search for file patterns to add.
+      #
+      # Default: false
+      recursive: true
+
+      # Ignored folders.
+      #
+      # Default: []
+      #ignore: ["vendor"]
+
+      # Service specific file pattens to sync.
+      #
+      # Default: []
+      #patterns: [".php", ".go", ".md"]

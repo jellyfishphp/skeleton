@@ -34,7 +34,7 @@ composer-install-nodev: ## Run composer install (without dev dependencies)
 	composer install --no-dev
 
 .PHONY: composer-update
-composer-install: ## Run composer install
+composer-update: ## Run composer install
 	composer up
 
 .PHONY: composer-dump-autoload
