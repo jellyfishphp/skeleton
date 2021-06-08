@@ -2,7 +2,7 @@ version: '3'
 
 services:
   roadrunner:
-    image: "jellyfishphp/php-cli:${PHP_VERSION}-dev-alpine"
+    image: "jellyfishphp/php:${PHP_VERSION}-cli-dev-alpine"
     volumes:
       - docker-sync:/var/www/jellyfish/releases/current:nocopy
     ports:
